@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="//code.jquery.com/jquery-git.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/result-light.css">
+<style type="text/css">
+    .spacer {
+    position: relative;
+    height: 2500px;
+    width: 100px;
+}
+
+.paravozik {
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100px;
+    height: 50px;
+    background:  transparent  url(http://www.cshrzc.com/Match/images/join.gif) no-repeat;
+    background-size: cover;
+    margin-left: -100px;
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+    -moz-transition: -moz-transform .3s ease-in-out;
+    -o-transition: -o-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+}
+.right {
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -o-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+
+  </style>
+<title> by IonDen</title>
+</head>
+
+<body>
+<div class="spacer"></div>
+
+<div class="paravozik right"></div>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    var temp = 0;
+  window.addEventListener('scroll', function() {
+    var height = document.documentElement.clientHeight,
+    width = document.documentElement.clientWidth,
+    el = document.querySelector(".paravozik"),
+    widthEl = el.clientWidth,
+    fullHeight = document.documentElement.scrollHeight;
+    var p = window.pageYOffset/(fullHeight - height);
+    var left = (width + widthEl)* p|0;
+       el.classList[p != 1 && (!left || temp  < left) ?   "add":"remove"]("right");
+       temp = left;
+       el.style.left = left + "px";
+  });
+    });
+
+</script>
+</body>
+
+</html>

@@ -8017,3 +8017,15 @@ disableDotsControls
 }
 
 export default App;
+<div class='video_text '>
+         <div class='d_flex_1'>
+      Подарите себе {" "}
+      <div class='color_new_3 ml_5'>
+      <ReactTyped strings={[" любовь и заботу"," красоту и нежность"]} typeSpeed={100} loop />
+      </div>
+   </div>
+        
+      <div >
+      а мы Вам в этом поможем!
+      </div>
+      </div>
