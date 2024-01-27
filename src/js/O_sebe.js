@@ -1,5 +1,5 @@
 import AliceCarousel from "react-alice-carousel";
-import { getKomplexpredlinfodesc, putKategorii, putO_sebe_info } from "../https/deviceAPI";
+import { delKategorii1, delOsebeinfo1, getKomplexpredlinfodesc, putKategorii, putO_sebe_info } from "../https/deviceAPI";
 import { useEffect } from "react";
 import useState from 'react-usestateref'
 import $ from 'jquery'
@@ -16,12 +16,18 @@ export const O_sebe23 = ({i}) => {
     const function61 = async() => {
     const ddd =  await putO_sebe_info(i.id,setO_sebe1Ref.current,setO_sebe2Ref.current)
     }
+    const function62 = async() => {
+
  
+        await delOsebeinfo1(i.id)
+        $(`.input_21e1${i.id}`).addClass('ddd_nnn')
+     
+    }
 
     return (
       
 
-        <p>
+        <p class={`input_21e1${i.id} reveal fade-left`}>
         <strong class='color font '>
           <div class='text06'>
           {i.title}
@@ -38,7 +44,11 @@ export const O_sebe23 = ({i}) => {
         <textarea class='text07 text07_' defaultValue={i.description} onChange={ e => setO_sebe2(e.target.value)}></textarea>
 
 </div>
+<div class='d_dd_f'>
 <button class='d_n' onClick={function61}>сохранить</button>
+<button class='d_n' onClick={function62}>удалить</button>
+</div>
+
 </p>
   )
 }

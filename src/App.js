@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import { Gallery } from './js/Carousel';
 import { Gallery1 } from './js/Carousel1';
 import ReactTyped from "react-typed";
-import { getActii, getActii2, getGlav_text, getKategorii, getKomplexpredlinfodesc, getKomplexpredlinfodesc1, getKontacts, getKontacts_phone, getO_sebe, getO_sebe_info, getOtzivi_info, getSertificats_info, getUslugi, getUslugi_price, getVizit, putActii_img, putKategorii, putO_sebe, putOtzivi, putUslugi2, putUslugi3, putVizit, putVizit1, putvideo, putvideo1 } from './https/deviceAPI';
+import { createActiiinfo, createKategorii1, createKomplexpredlinfo1, createOtziviinfo, createSertificatsinfo, createUslugi1, createUslugiprice1, createUslugiprice2, creategetOsebeinfo1, getActii, getActii2, getGlav_text, getKategorii, getKomplexpredlinfodesc, getKomplexpredlinfodesc1, getKontacts, getKontacts_phone, getO_sebe, getO_sebe_info, getOtzivi_info, getSertificats_info, getUslugi, getUslugi_price, getVizit, putActii_img, putKategorii, putO_sebe, putOtzivi, putUsl, putUslugi2, putUslugi3, putVizit, putVizit1, putvideo, putvideo1 } from './https/deviceAPI';
 import { LoginControl } from './Greeting';
 import { Carous, Carous1 } from './Carous';
 import { Kategorii1 } from './js/Kategorii';
@@ -20,9 +20,100 @@ import { Actii1 } from './js/Actii';
 import { O_sebe23 } from './js/O_sebe';
 import { Otzivi12 } from './js/Otzivi';
 import { Sert12 } from './js/Sert12';
+import { Phone, Phone123 } from './js/Phone';
 function App() {
   // const [video,setvideo,setvideoRef] = useState('https://vod.fl.freecaster.net/vod/kenzo/o5zgqb5ZHd_720p.mp4')
   
+
+
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+  
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 0;
+  
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      } else {
+        reveals[i].classList.remove("active");
+      }
+    }
+  }
+  
+  window.addEventListener("scroll", reveal);
+
+
+
+
+
+  const add_price = async() => {
+
+    const id= setiduslugiRef.current
+    await createUslugiprice2(id,id)
+    function0111()
+   }  
+
+  const add_kategor = async() => {
+
+   await createKategorii1()
+   get()
+  }
+  const add_otziv = async() => {
+
+    await createOtziviinfo()
+    get()
+   }
+
+   const add_sert = async() => {
+
+    await createSertificatsinfo()
+    get()
+   }
+  const creategetOsebeinfo = async() => {
+    await creategetOsebeinfo1()
+    get()
+   }
+
+   const createUslugi = async() => {
+    await createUslugi1()
+    get()
+   }
+
+   const createKomplexpredlinfo = async() => {
+    await createKomplexpredlinfo1()
+    get()
+   }
+   const createActiiinfo1 = async() => {
+    await createActiiinfo()
+    get()
+    $(`.bububu`).removeClass('input_active')
+    $(`.mar_lf1`).removeClass('input_active')
+    $(`.class11`).removeClass('input_active')
+    $(`.class1212`).removeClass('input_active')
+
+ 
+   }
+   const administr = async() => {
+    if(setpasswRef.current=='admin'){
+
+
+      $(`.class0`).addClass('input_active')
+      $(`.class01`).addClass('input_1_active')
+      $(`.dsdw`).addClass('input_active')
+
+
+      $('.invize').addClass('display_admin')
+      $('.h_25_').addClass('h_25_1')
+      setrole('admin')
+      document.getElementById('elementID').click();
+    }else{
+      alert('Неверный пароль')
+    }
+
+   }
+   
   const functi3 = async() => {
   
     const formData = new FormData()
@@ -39,6 +130,25 @@ console.log(setvizit_imgRef.current)
    get()
     }
 
+
+    const functi5 = async() => {
+  
+    const formData = new FormData()
+     
+    formData.append('adress',setadresRef.current)
+    formData.append('uslugi',setullRef.current)
+    const fff = await putUsl(formData)
+
+    functi4()
+     get()
+      }
+
+
+
+    const functi4 = async() => {
+      $('.teex_iput_none').toggleClass('input_1_active')
+      $('.teex_iput').toggleClass('input_active')
+    }
   const selectFile = e => {
     setVideo_(e.target.files[0])
 }
@@ -82,7 +192,9 @@ const function61 = async() => {
   
   $(`.class0`).toggleClass('input_active')
   $(`.class01`).toggleClass('input_1_active')
-  $(`.context_`).toggleClass('input_active')
+  $(`.dsdw`).toggleClass('input_active')
+  
+  // $(`.context_`).toggleClass('input_active')
   
 }
   $(document).ready(function(){
@@ -143,8 +255,60 @@ const function6 = async() => {
    
 //     console.log('dfsfsdfds')
 // });
+
   useEffect(() => {
- 
+
+
+
+    $('#one_11').on('click', function() {
+      $([
+        document.documentElement, document.body
+      ]).scrollTop($('#o_sebe').offset().top);
+    });
+
+    $('#one_22').on('click', function() {
+      $([
+        document.documentElement, document.body
+      ]).scrollTop($('#uslugi').offset().top);
+    });
+    $('#one_33').on('click', function() {
+      $([
+        document.documentElement, document.body
+      ]).scrollTop($('#actii').offset().top);
+    });
+
+    $('#one_44').on('click', function() {
+      $([
+        document.documentElement, document.body
+      ]).scrollTop($('#predl').offset().top);
+    });
+
+    $('#one_55').on('click', function() {
+      $([
+        document.documentElement, document.body
+      ]).scrollTop($('#otzivi').offset().top);
+    });
+
+    $('#one_66').on('click', function() {
+      $([
+        document.documentElement, document.body
+      ]).scrollTop($('#sert').offset().top);
+    });
+
+    $('#one_77').on('click', function() {
+      $([
+        document.documentElement, document.body
+      ]).scrollTop($('#vizit').offset().top);
+    }
+    
+    );
+
+
+
+
+    if(setroleRef.current == 'admin'){
+      $('.invize').addClass('display_admin')
+    }
     $(document).ready(function() {
       $("#btnSubmit").click(function(){
           alert("button");
@@ -196,7 +360,11 @@ const function6 = async() => {
 <img src='https://static3.tildacdn.com/tild3465-3135-4831-b834-653264346334/--2.png'/> ,
 <img src='https://static3.tildacdn.com/tild3033-3462-4563-a562-653061303064/rr32_1.png'/> ,
   ]
+  const [adres,setadres,setadresRef] = useState()
+  const [ull,setull,setullRef] = useState()
+  const [role,setrole,setroleRef] = useState('user')
 
+  const [passw,setpassw,setpasswRef] = useState()
   const [otziv,setotziv,setotzivRef] = useState()
   
   const [Video_text1,setVideo_text1,setVideo_text1Ref] = useState()
@@ -321,18 +489,18 @@ const function6 = async() => {
     $('.wi').toggleClass('click')
   }
  
-  const function62 = async() => {
+  // const function62 = async() => {
   
-    $(`.class3`).toggleClass('input_active')
-    $(`.class2`).toggleClass('input_1_active')
+  //   $(`.class3`).toggleClass('input_active')
+  //   $(`.class2`).toggleClass('input_1_active')
     
-  }
-  const function63 = async() => {
+  // }
+  // const function63 = async() => {
   
-    $(`.class3`).removeClass('input_active')
-    $(`.class2`).removeClass('input_1_active')
+  //   $(`.class3`).removeClass('input_active')
+  //   $(`.class2`).removeClass('input_1_active')
     
-  }
+  // }
 
   const function64 = async() => {
     
@@ -350,6 +518,9 @@ const function6 = async() => {
     $(`.mar_lf1`).toggleClass('input_active')
     $(`.class11`).toggleClass('input_active')
     $(`.class1212`).toggleClass('input_active')
+
+
+    
      
   }
 
@@ -427,13 +598,24 @@ setVizit(vizit[0])
 setKontacts_phone(kontakts_phone)
 setKontacts(kontakts[0])
 
-console.log(uslugi)
+
+setadres(kontakts[0].adress)
+setull(kontakts[0].uslugi)
+
+
+console.log(kontakts_phone)
+console.log(kontakts[0])
+if(setroleRef.current == 'admin'){
+  $('.invize').addClass('display_admin')
+}
+function011()
 get3()
 get2()
 get4()
   }
   const get3 = async() => {
     const Komplexpred = await getKomplexpredlinfodesc()
+    Komplexpred.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
     // const ceo =await getKomplexpredlinfodesc1()
     // console.log(ceo)
     let items =[]
@@ -466,9 +648,11 @@ get4()
     let items =[]
     Komplexpred.map(e=>
     items.push(
-    
-      <Otzivi12 e={e} get={get}/>
+  
+
    
+      <Otzivi12 e={e} get={get}/>
+ 
 
     
     )
@@ -484,21 +668,63 @@ get4()
     let items =[]
     Komplexpred.map(e=>
     items.push(
-     <Sert12 e={e} get={get}/>
+     <Sert12 e={e} get={get} get4={get4}/>
 
     )
     )
     setitems3(items)
   }
+  const function0111 = async() => {
+    
+    const dd = await getUslugi_price(setiduslugiRef.current)
+    dd.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
+    setUslugi1(dd)
+
+  }
+  const function01110 = async(id) => {
+    
+    const dd = await getUslugi_price(id)
+    dd.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
+    setUslugi1(dd)
+
+  }
+  const function011 = async() => {
+    
+    const dd = await getUslugi_price(setUslugiRef?.current[0].id)
+    dd.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
+    setUslugi1(dd)
+    setiduslugi(setUslugiRef?.current[0].id)
+  }
+  const [kok,setkok,setkokRef] = useState(0)
+  const clock = async() => {
+   
+    if(setkokRef.current<10){
+      setkok(setkokRef.current+1)
+    }else{
+      setkok(0)
+      document.getElementById('elementID').click();
+    }
+    
+  }
+  
+  const sdadaas = async() => {
+    document.getElementById('elementID1').click();
+  }
+
+
   const function1 = async(e,i) => {
-    function63()
+    // function63()
     //   if($(e.target.children[0]?.firstChild.classList)?.length===1){
+
         setUslugi_title(i.name)
         setUslugi_text(i.description)
-
+        console.log(setUslugiRef?.current[0].id)
         const dd = await getUslugi_price(i.id)
+        
+        dd.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
         setUslugi1(dd)
         setiduslugi(i.id)
+        // function0111()
     //     $('.but_2').removeClass('but_active')
     //     $('.fill1').removeClass('fill_active1')
     //     $('.fill1').removeClass('but_active')
@@ -507,7 +733,7 @@ get4()
     
     // }but_2 
     const ddg = `.img_${i.id}`
-    console.log(dd)
+    // console.log(dd)
     $(e.target).closest('.but_2').addClass('but_active')
     $('.but_active').removeClass('but_active')
 
@@ -518,29 +744,7 @@ get4()
     $('.img_svg').removeClass('but_active')
     // $(e.target).closest('.img_svg').addClass('img_svg_active')
     $(e.target).closest('.but_2').addClass('but_active')
-    $(e.target).addClass('but_active')
-    // if($(e.target.children[0]?.firstChild.classList)?.length===0){
-    //   setUslugi_title(i.name)
-    //   setUslugi_text(i.description)
-    //   $('.but_2').removeClass('but_active')
-    //   $('.fill1').removeClass('fill_active1')
-    //   $('.fill1').removeClass('but_active')
-    //   const dd = await getUslugi_price(i.id)
-    //   $(e.target).closest('.but_2').addClass('but_active')
-    //   $(e.target).addClass('fill_active1')
-    //   $(e.target).closest('.fill1').addClass('fill_active1')
-    // }
-   
-      // if($(e.target.children[0].firstChild.classList).length===0){
-        // $('.but_2').removeClass('but_active')
-        // $('.fill1').removeClass('fill_active1')
-        // $('.fill1').removeClass('but_active')
-      //   console.log(console.log($(this).closest('.but_2')))
-      //   $($(this).closest('.but_2')).addClass('but_active')
-      //   // $(e.target.parentElement.firstChild).addClass('fill_active1') 
-        
-      // }
-          
+    $(e.target).addClass('but_active') 
       $('.img_svg').removeClass('but_active')
 
    
@@ -553,13 +757,60 @@ get4()
   // }
 
 
- 
+  if(setroleRef.current == 'admin'){
+    $('.invize').addClass('display_admin')
+    $('.reveal').removeClass('reveal')
+    $('.fade-left').removeClass('fade-left')
+    setTimeout(function(){ $('.fade-left').removeClass('fade-left')},500);
+    setTimeout(function(){$('.class0').addClass('display_admin')},500);
+  }
   return (
     <div className="App">
+
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div>
+      <div class="login-box">
+  <h2>Панель администратора</h2>
+  <form>
+  
+    <div class="user-box">
+      <input onChange={ e => setpassw(e.target.value)} placeholder='Введите пароль администратора' type="password" name="" required=""/>
+    
+    </div>
+    <a  class='use_boo' onClick={administr}>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
+  </form>
+</div>
+      </div>
+   
+   
+    </div>
+  </div>
+</div>
        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
 
   <div class="offcanvas-body">
+  <ul class="navbar-list">
+
+
+<li class='mn_5'><a href='#o_sebe' class='on_e' id="one_11"data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">О Себе</a></li>
+<li class='mn_5'><a href='#uslugi' id="one_22" class='on_e'data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Услуги</a></li>
+<li class='mn_5'><a href='#actii' id="one_33"class='on_e' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Акции</a></li>
  
+  <li class='mn_5'><a href='#predl' id="one_44"class='on_e'data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" >Комплексные Предложения</a></li>
+  <li class='mn_5'><a href='#otzivi' id="one_55" class='on_e'data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Отзывы</a></li>
+  <li class='mn_5'><a href='#sert' id="one_66" class='on_e'data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Сертификаты</a></li>
+    <li class='mn_5'><a href='#vizit' id="one_77"class='on_e' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Запланировать Визит</a></li>
+    </ul>
   </div>
 </div>
         <div class='nav'> 
@@ -572,7 +823,7 @@ get4()
         </div>
         </div>
 
-<div class='width_33 h_100' >
+<div class='width_33 h_100' onClick={clock}>
 
 
   
@@ -584,7 +835,7 @@ get4()
 
 
         <div class='width_33 wi'  >
-        <svg onClick={fun} data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" class="stroke icon2 icon icon-hamburger" width="20px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" viewBox="0 0 18 16"><path d="M1 .5a.5.5 0 100 1h15.71a.5.5 0 000-1H1zM.5 8a.5.5 0 01.5-.5h15.71a.5.5 0 010 1H1A.5.5 0 01.5 8zm0 7a.5.5 0 01.5-.5h15.71a.5.5 0 010 1H1a.5.5 0 01-.5-.5z" fill="currentColor"></path></svg>
+        <svg id='elementID1' data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" class="stroke icon2 icon icon-hamburger" width="20px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" viewBox="0 0 18 16"><path d="M1 .5a.5.5 0 100 1h15.71a.5.5 0 000-1H1zM.5 8a.5.5 0 01.5-.5h15.71a.5.5 0 010 1H1A.5.5 0 01.5 8zm0 7a.5.5 0 01.5-.5h15.71a.5.5 0 010 1H1a.5.5 0 01-.5-.5z" fill="currentColor"></path></svg>
           </div>
 
         </div>
@@ -595,7 +846,7 @@ get4()
     <br/>
   {setVideo_text2Ref.current}
    </div>
-<div class='container_2'>
+<div class='container_2' >
 <input class='text05 text05_ file' onChange={selectFile} placeholder={'Иконка'} type="file" />
 <input class='text03' defaultValue={setVideo_text1Ref.current} onChange={ e => setVideo_text1(e.target.value)}/>
     
@@ -604,11 +855,11 @@ get4()
 </div>
 
 
-      <div class="but_1 "><a href="/" class="ddott ml-5 ">Акции</a>  <a href="/" class="ddott ml-5 ">Предложения</a>
+      <div class="but_1 "><a href="/" class="ddott ml-5 ">Предложения</a>  <a href="/" class="ddott ml-5 ">Акции</a>
       
-           <svg class='mar_lf' onClick={function4} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-           <svg onClick={function22} width='47px' class='pd_f' viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" fill="rgb(0,0,0)" data-name="Layer 2"><path d="m1421.3 1539.6h-689.5c-107.4 0-194.8-87.4-194.8-194.9v-689.4c0-107.5 87.4-194.9 194.8-194.9h689.5c107.4 0 194.8 87.4 194.8 194.9v689.4c0 107.5-87.4 194.9-194.8 194.9zm-689.5-1009.2a124.9 124.9 0 0 0 -124.8 124.9v689.4a124.9 124.9 0 0 0 124.8 124.9h689.5c68.8 0 124.8-56 124.8-124.9v-689.4c0-68.9-56-124.9-124.8-124.9z"/><path d="m1023.7 1153a35.1 35.1 0 0 1 -24.7-10.2l-130.5-130.5a35 35 0 0 1 49.5-49.5l105.7 105.7 211.4-211.3a35 35 0 0 1 49.5 49.5l-236.1 236.1a35.4 35.4 0 0 1 -24.8 10.2z"/></g></svg> 
-   
+           <svg class='mar_lf invize' onClick={function4} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+           {/* <svg  onClick={function22} width='47px' class='pd_f invize' viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" fill="rgb(0,0,0)" data-name="Layer 2"><path d="m1421.3 1539.6h-689.5c-107.4 0-194.8-87.4-194.8-194.9v-689.4c0-107.5 87.4-194.9 194.8-194.9h689.5c107.4 0 194.8 87.4 194.8 194.9v689.4c0 107.5-87.4 194.9-194.8 194.9zm-689.5-1009.2a124.9 124.9 0 0 0 -124.8 124.9v689.4a124.9 124.9 0 0 0 124.8 124.9h689.5c68.8 0 124.8-56 124.8-124.9v-689.4c0-68.9-56-124.9-124.8-124.9z"/><path d="m1023.7 1153a35.1 35.1 0 0 1 -24.7-10.2l-130.5-130.5a35 35 0 0 1 49.5-49.5l105.7 105.7 211.4-211.3a35 35 0 0 1 49.5 49.5l-236.1 236.1a35.4 35.4 0 0 1 -24.8 10.2z"/></g></svg>  */}
+           <button onClick={function22} class='dsdw1 pd_f invize'>сохранить</button>
     </div>
  
     
@@ -624,8 +875,10 @@ get4()
         {setKategoriiRef?.current?.map(i =>
    <Kategorii1 i={i} get={get}/>
         )}
-    
-          {/* <div class="col-12 col-xl-6">
+        <div class='plus'>
+        <svg onClick={add_kategor} class='add_plus invize'viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"  fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-square</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" > <g id="Icon-Set"  transform="translate(-100.000000, -1035.000000)" fill="#000000"> <path d="M130,1063 C130,1064.1 129.104,1065 128,1065 L104,1065 C102.896,1065 102,1064.1 102,1063 L102,1039 C102,1037.9 102.896,1037 104,1037 L128,1037 C129.104,1037 130,1037.9 130,1039 L130,1063 L130,1063 Z M128,1035 L104,1035 C101.791,1035 100,1036.79 100,1039 L100,1063 C100,1065.21 101.791,1067 104,1067 L128,1067 C130.209,1067 132,1065.21 132,1063 L132,1039 C132,1036.79 130.209,1035 128,1035 L128,1035 Z M122,1050 L117,1050 L117,1045 C117,1044.45 116.552,1044 116,1044 C115.448,1044 115,1044.45 115,1045 L115,1050 L110,1050 C109.448,1050 109,1050.45 109,1051 C109,1051.55 109.448,1052 110,1052 L115,1052 L115,1057 C115,1057.55 115.448,1058 116,1058 C116.552,1058 117,1057.55 117,1057 L117,1052 L122,1052 C122.552,1052 123,1051.55 123,1051 C123,1050.45 122.552,1050 122,1050 L122,1050 Z" id="plus-square"> </path> </g> </g> </g></svg>
+           </div>
+       {/* <div class="col-12 col-xl-6">
             <div class="features__item">
 <div>
 <svg  xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 108 102" class='fill'>
@@ -683,24 +936,29 @@ get4()
     </div>
   </section>
 
-  <section class="section mission">
-    <div class="container">
+  <section class="section mission " id='o_sebe'>
+    <div class="container ">
     <div class='horizontal_line'></div>
      <h2 class=" section__title aos-init aos-animate font" data-aos="fade-left">
-      <div class='text06'>
+      <div class='reveal fade-left' >
       {setO_sebe1Ref?.current?.name} 
     
       </div>
-      <input class='text07' defaultValue={setO_sebe1Ref?.current?.name} onChange={ e => setO_sebe2(e.target.value)}/>
-    
-    
-         <svg class='mar_lf' onClick={function5} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-           <svg  width='47px' class='pd_f' viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" fill="rgb(0,0,0)" data-name="Layer 2"><path d="m1421.3 1539.6h-689.5c-107.4 0-194.8-87.4-194.8-194.9v-689.4c0-107.5 87.4-194.9 194.8-194.9h689.5c107.4 0 194.8 87.4 194.8 194.9v689.4c0 107.5-87.4 194.9-194.8 194.9zm-689.5-1009.2a124.9 124.9 0 0 0 -124.8 124.9v689.4a124.9 124.9 0 0 0 124.8 124.9h689.5c68.8 0 124.8-56 124.8-124.9v-689.4c0-68.9-56-124.9-124.8-124.9z"/><path d="m1023.7 1153a35.1 35.1 0 0 1 -24.7-10.2l-130.5-130.5a35 35 0 0 1 49.5-49.5l105.7 105.7 211.4-211.3a35 35 0 0 1 49.5 49.5l-236.1 236.1a35.4 35.4 0 0 1 -24.8 10.2z"/></g></svg> 
+      {/* <input class='' defaultValue={setO_sebe1Ref?.current?.name} onChange={ e => setO_sebe2(e.target.value)}/>
+     */}
+    <div class='dffd'>
+    <svg class='mar_lf invize reveal fade-left' onClick={function5} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+           {/* <svg  width='47px' class='pd_f invize' viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" fill="rgb(0,0,0)" data-name="Layer 2"><path d="m1421.3 1539.6h-689.5c-107.4 0-194.8-87.4-194.8-194.9v-689.4c0-107.5 87.4-194.9 194.8-194.9h689.5c107.4 0 194.8 87.4 194.8 194.9v689.4c0 107.5-87.4 194.9-194.8 194.9zm-689.5-1009.2a124.9 124.9 0 0 0 -124.8 124.9v689.4a124.9 124.9 0 0 0 124.8 124.9h689.5c68.8 0 124.8-56 124.8-124.9v-689.4c0-68.9-56-124.9-124.8-124.9z"/><path d="m1023.7 1153a35.1 35.1 0 0 1 -24.7-10.2l-130.5-130.5a35 35 0 0 1 49.5-49.5l105.7 105.7 211.4-211.3a35 35 0 0 1 49.5 49.5l-236.1 236.1a35.4 35.4 0 0 1 -24.8 10.2z"/></g></svg> 
+           <button onClick={function22} class='dsdw2 pd_f invize'>сохранить</button> */}
+      <svg onClick={creategetOsebeinfo} class=' invize add_plus1 reveal fade-left'viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"  fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-square</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" > <g id="Icon-Set"  transform="translate(-100.000000, -1035.000000)" fill="#000000"> <path d="M130,1063 C130,1064.1 129.104,1065 128,1065 L104,1065 C102.896,1065 102,1064.1 102,1063 L102,1039 C102,1037.9 102.896,1037 104,1037 L128,1037 C129.104,1037 130,1037.9 130,1039 L130,1063 L130,1063 Z M128,1035 L104,1035 C101.791,1035 100,1036.79 100,1039 L100,1063 C100,1065.21 101.791,1067 104,1067 L128,1067 C130.209,1067 132,1065.21 132,1063 L132,1039 C132,1036.79 130.209,1035 128,1035 L128,1035 Z M122,1050 L117,1050 L117,1045 C117,1044.45 116.552,1044 116,1044 C115.448,1044 115,1044.45 115,1045 L115,1050 L110,1050 C109.448,1050 109,1050.45 109,1051 C109,1051.55 109.448,1052 110,1052 L115,1052 L115,1057 C115,1057.55 115.448,1058 116,1058 C116.552,1058 117,1057.55 117,1057 L117,1052 L122,1052 C122.552,1052 123,1051.55 123,1051 C123,1050.45 122.552,1050 122,1050 L122,1050 Z" id="plus-square"> </path> </g> </g> </g></svg>
+       
+    </div>
+        
    </h2>
  
       <div class="row mission__body g-3 g-xl-5">
         <div class="col-12 col-xl-5 aos-init aos-animate" data-aos="fade-up">
-          <div class="mission__text">
+          <div class="mission__text ">
         
           {setO_sebeRef?.current?.map(i =>
           <O_sebe23 i={i} setO_sebe4={setO_sebe4} setO_sebe3={setO_sebe3} />
@@ -712,24 +970,27 @@ get4()
         </div>
         <div class="col-12 col-xl-7">
           <div class="mission__image aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
-            <img  class='img_avtor' src={process.env.REACT_APP_API_URL + setO_sebe1Ref?.current?.img} alt=""/></div>
+            <img  class='img_avtor reveal fade-bottom ' src={process.env.REACT_APP_API_URL + setO_sebe1Ref?.current?.img} alt=""/></div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <section class="section mission">
+  <section class="section mission" id='uslugi'>
     <div class="container">
       <div class='line_flex'>
-      <div class='horizontal_line'></div> <h2 class="uslugi section__title aos-init aos-animate class01" data-aos="fade-left">Услуги</h2>
+      <div class='horizontal_line'></div> <h2 class="uslugi section__title aos-init aos-animate reveal fade-left" data-aos="fade-left">Услуги</h2>
       </div> 
-      <input class='context_' defaultValue={setO_sebe1Ref?.current?.name} onChange={ e => setO_sebe2(e.target.value)}/>
-  
-       <svg class='mar_lf' onClick={function61} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-        <svg width='47px' class='pd_f' viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" fill="rgb(0,0,0)" data-name="Layer 2"><path d="m1421.3 1539.6h-689.5c-107.4 0-194.8-87.4-194.8-194.9v-689.4c0-107.5 87.4-194.9 194.8-194.9h689.5c107.4 0 194.8 87.4 194.8 194.9v689.4c0 107.5-87.4 194.9-194.8 194.9zm-689.5-1009.2a124.9 124.9 0 0 0 -124.8 124.9v689.4a124.9 124.9 0 0 0 124.8 124.9h689.5c68.8 0 124.8-56 124.8-124.9v-689.4c0-68.9-56-124.9-124.8-124.9z"/><path d="m1023.7 1153a35.1 35.1 0 0 1 -24.7-10.2l-130.5-130.5a35 35 0 0 1 49.5-49.5l105.7 105.7 211.4-211.3a35 35 0 0 1 49.5 49.5l-236.1 236.1a35.4 35.4 0 0 1 -24.8 10.2z"/></g></svg> 
-    
-       <div class='button_group'>
+      <input class='context_ reveal fade-left' defaultValue={setO_sebe1Ref?.current?.name} onChange={ e => setO_sebe2(e.target.value)}/>
+  <div class='dffd '>
+
+  {/* <svg class='mar_lf invize reveal fade-left ' onClick={function61} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg> */}
+        {/* <svg width='47px' class='pd_f invize' viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" fill="rgb(0,0,0)" data-name="Layer 2"><path d="m1421.3 1539.6h-689.5c-107.4 0-194.8-87.4-194.8-194.9v-689.4c0-107.5 87.4-194.9 194.8-194.9h689.5c107.4 0 194.8 87.4 194.8 194.9v689.4c0 107.5-87.4 194.9-194.8 194.9zm-689.5-1009.2a124.9 124.9 0 0 0 -124.8 124.9v689.4a124.9 124.9 0 0 0 124.8 124.9h689.5c68.8 0 124.8-56 124.8-124.9v-689.4c0-68.9-56-124.9-124.8-124.9z"/><path d="m1023.7 1153a35.1 35.1 0 0 1 -24.7-10.2l-130.5-130.5a35 35 0 0 1 49.5-49.5l105.7 105.7 211.4-211.3a35 35 0 0 1 49.5 49.5l-236.1 236.1a35.4 35.4 0 0 1 -24.8 10.2z"/></g></svg> 
+     */}
+          <svg onClick={createUslugi} class='add_plus1 reveal fade-left invize'viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"  fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-square</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" > <g id="Icon-Set"  transform="translate(-100.000000, -1035.000000)" fill="#000000"> <path d="M130,1063 C130,1064.1 129.104,1065 128,1065 L104,1065 C102.896,1065 102,1064.1 102,1063 L102,1039 C102,1037.9 102.896,1037 104,1037 L128,1037 C129.104,1037 130,1037.9 130,1039 L130,1063 L130,1063 Z M128,1035 L104,1035 C101.791,1035 100,1036.79 100,1039 L100,1063 C100,1065.21 101.791,1067 104,1067 L128,1067 C130.209,1067 132,1065.21 132,1063 L132,1039 C132,1036.79 130.209,1035 128,1035 L128,1035 Z M122,1050 L117,1050 L117,1045 C117,1044.45 116.552,1044 116,1044 C115.448,1044 115,1044.45 115,1045 L115,1050 L110,1050 C109.448,1050 109,1050.45 109,1051 C109,1051.55 109.448,1052 110,1052 L115,1052 L115,1057 C115,1057.55 115.448,1058 116,1058 C116.552,1058 117,1057.55 117,1057 L117,1052 L122,1052 C122.552,1052 123,1051.55 123,1051 C123,1050.45 122.552,1050 122,1050 L122,1050 Z" id="plus-square"> </path> </g> </g> </g></svg>
+         </div>
+      <div class='button_group reveal fade-left'>
         
      
        {setUslugiRef?.current?.map(i =>
@@ -798,22 +1059,18 @@ get4()
 
    <input class='class0 title_tex_ file' defaultValue={setUslugi_titleRef.current} onChange={e => setUslugi_title(e.target.value)  } placeholder={'Иконка'} type="text" />
 
-    <strong class='color_new height_tit class01'>
+    <strong class='color_new height_tit class01 reveal fade-left'>
       
 {setUslugi_titleRef.current}
     </strong>
    </div>
 
-   <textarea class='class0  textarea' defaultValue={setUslugi_textRef.current} onChange={e => setUslugi_text(e.target.value)  } placeholder={'Иконка'}  ></textarea>
-   <input class='class0 file file_' onChange={selectFile2} placeholder={'Иконка'} type="file" />
-   <button class='butil' onClick={put__usl}>сохранить</button>
-  <div class='dffd'>
-  <svg class='mar_lf class0' onClick={function62} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-   <svg  width='47px' class='pd_f class0' viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" fill="rgb(0,0,0)" data-name="Layer 2"><path d="m1421.3 1539.6h-689.5c-107.4 0-194.8-87.4-194.8-194.9v-689.4c0-107.5 87.4-194.9 194.8-194.9h689.5c107.4 0 194.8 87.4 194.8 194.9v689.4c0 107.5-87.4 194.9-194.8 194.9zm-689.5-1009.2a124.9 124.9 0 0 0 -124.8 124.9v689.4a124.9 124.9 0 0 0 124.8 124.9h689.5c68.8 0 124.8-56 124.8-124.9v-689.4c0-68.9-56-124.9-124.8-124.9z"/><path d="m1023.7 1153a35.1 35.1 0 0 1 -24.7-10.2l-130.5-130.5a35 35 0 0 1 49.5-49.5l105.7 105.7 211.4-211.3a35 35 0 0 1 49.5 49.5l-236.1 236.1a35.4 35.4 0 0 1 -24.8 10.2z"/></g></svg> 
-      
-  </div>
+   <textarea class='class0 reveal fade-left textarea' defaultValue={setUslugi_textRef.current} onChange={e => setUslugi_text(e.target.value)  } placeholder={'Иконка'}  ></textarea>
+   <input class='class0 file file_ reveal fade-left'  onChange={selectFile2} placeholder={'Иконка'} type="file" />
+   <button class='butil dsdw212 invize reveal fade-left' onClick={put__usl}>сохранить</button>
 
-   <div class='usl_text color_2 color_new_2 class01'>
+
+   <div class='usl_text color_2 color_new_2 class01 reveal fade-left'>
    {setUslugi_textRef.current}
    </div>
 
@@ -821,7 +1078,7 @@ get4()
         </div>
 
         <div class='carousel_width'>
-<img src={process.env.REACT_APP_API_URL + setimgRef?.current} class='usl_img'/>
+<img src={process.env.REACT_APP_API_URL + setimgRef?.current} class='usl_img reveal fade-bottom '/>
         </div>
 
        
@@ -829,39 +1086,41 @@ get4()
          <div class='cont_but_ color_new_2'>
          {setUslugi1Ref?.current?.map(i =>
 
-<Price i={i} />
+<Price i={i} function0111={function0111} ids={setiduslugiRef.current} setUslugi1={setUslugi1}/>
 
 
 
          )}
 
 
-
+<div class='plus mtta _ reveal fade-left'>
+        <svg onClick={add_price} class='add_plus invize'viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"  fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-square</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" > <g id="Icon-Set"  transform="translate(-100.000000, -1035.000000)" fill="#000000"> <path d="M130,1063 C130,1064.1 129.104,1065 128,1065 L104,1065 C102.896,1065 102,1064.1 102,1063 L102,1039 C102,1037.9 102.896,1037 104,1037 L128,1037 C129.104,1037 130,1037.9 130,1039 L130,1063 L130,1063 Z M128,1035 L104,1035 C101.791,1035 100,1036.79 100,1039 L100,1063 C100,1065.21 101.791,1067 104,1067 L128,1067 C130.209,1067 132,1065.21 132,1063 L132,1039 C132,1036.79 130.209,1035 128,1035 L128,1035 Z M122,1050 L117,1050 L117,1045 C117,1044.45 116.552,1044 116,1044 C115.448,1044 115,1044.45 115,1045 L115,1050 L110,1050 C109.448,1050 109,1050.45 109,1051 C109,1051.55 109.448,1052 110,1052 L115,1052 L115,1057 C115,1057.55 115.448,1058 116,1058 C116.552,1058 117,1057.55 117,1057 L117,1052 L122,1052 C122.552,1052 123,1051.55 123,1051 C123,1050.45 122.552,1050 122,1050 L122,1050 Z" id="plus-square"> </path> </g> </g> </g></svg>
+           </div>
 </div>
 
 <div class='but_flex'>
-<div class='carousel_buttom zapis bgcolor_new color_bg'>
+<a href='#vizit' class='carousel_buttom zapis bgcolor_new color_bg reveal fade-right'>
         Записаться 
-       </div>
+       </a>
 </div>
 
       </div>
       </section>
 
 
-  <section class="section mission">
+  <section class="section mission" id='predl'>
     <div class="container">
     <div class='horizontal_line'></div>  
-    <input class='class6 title_tex_ file' defaultValue={'Комплексные предложения'} onChange={setUslugi_title} placeholder={'Иконка'} type="text" />
+    <input class=' title_tex_ file' defaultValue={'Комплексные предложения'} onChange={setUslugi_title} placeholder={'Иконка'} type="text" />
 
-    <h2 class="section__title aos-init aos-animate class8" data-aos="fade-left">Комплексные предложения</h2>
+    <h2 class="section__title aos-init aos-animate reveal fade-left" data-aos="fade-left">Комплексные предложения</h2>
  
 
-    <div class='dffd'>
-  <svg class='mar_lf class7' onClick={function64} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-   <svg  width='47px' class='pd_f class7' viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" fill="rgb(0,0,0)" data-name="Layer 2"><path d="m1421.3 1539.6h-689.5c-107.4 0-194.8-87.4-194.8-194.9v-689.4c0-107.5 87.4-194.9 194.8-194.9h689.5c107.4 0 194.8 87.4 194.8 194.9v689.4c0 107.5-87.4 194.9-194.8 194.9zm-689.5-1009.2a124.9 124.9 0 0 0 -124.8 124.9v689.4a124.9 124.9 0 0 0 124.8 124.9h689.5c68.8 0 124.8-56 124.8-124.9v-689.4c0-68.9-56-124.9-124.8-124.9z"/><path d="m1023.7 1153a35.1 35.1 0 0 1 -24.7-10.2l-130.5-130.5a35 35 0 0 1 49.5-49.5l105.7 105.7 211.4-211.3a35 35 0 0 1 49.5 49.5l-236.1 236.1a35.4 35.4 0 0 1 -24.8 10.2z"/></g></svg> 
+    <div class='dffd invize'>
+  <svg class='mar_lf  invize' onClick={function64} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
 
-  </div>
+  <svg onClick={createKomplexpredlinfo} class='add_plus1 invize'viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"  fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-square</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" > <g id="Icon-Set"  transform="translate(-100.000000, -1035.000000)" fill="#000000"> <path d="M130,1063 C130,1064.1 129.104,1065 128,1065 L104,1065 C102.896,1065 102,1064.1 102,1063 L102,1039 C102,1037.9 102.896,1037 104,1037 L128,1037 C129.104,1037 130,1037.9 130,1039 L130,1063 L130,1063 Z M128,1035 L104,1035 C101.791,1035 100,1036.79 100,1039 L100,1063 C100,1065.21 101.791,1067 104,1067 L128,1067 C130.209,1067 132,1065.21 132,1063 L132,1039 C132,1036.79 130.209,1035 128,1035 L128,1035 Z M122,1050 L117,1050 L117,1045 C117,1044.45 116.552,1044 116,1044 C115.448,1044 115,1044.45 115,1045 L115,1050 L110,1050 C109.448,1050 109,1050.45 109,1051 C109,1051.55 109.448,1052 110,1052 L115,1052 L115,1057 C115,1057.55 115.448,1058 116,1058 C116.552,1058 117,1057.55 117,1057 L117,1052 L122,1052 C122.552,1052 123,1051.55 123,1051 C123,1050.45 122.552,1050 122,1050 L122,1050 Z" id="plus-square"> </path> </g> </g> </g></svg>
+          </div>
 
 
 
@@ -878,22 +1137,23 @@ get4()
       </section>
 
 
-      <section class="section mission">
+      <section class="section mission" id='actii'>
     <div class="container">
     <div class='horizontal_line'></div> 
     
-    <h2 class="section__title section__title_2 aos-init aos-animate" data-aos="fade-left">Акции</h2>
-    <input class='class11 title_tex_1 file' defaultValue={'Акции'} onChange={setUslugi_title} placeholder={'Иконка'} type="text" />
+    <h2 class="section__title section__title_2 aos-init aos-animate reveal fade-left" data-aos="fade-left">Акции</h2>
+    <input class=' title_tex_1 file reveal fade-left' defaultValue={'Акции'} onChange={setUslugi_title} placeholder={'Иконка'} type="text" />
 
-    <div class='dffd -'>
-  <svg class='mar_lf ' onClick={function65} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-   <svg  width='47px' class='pd_f ' viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" fill="rgb(0,0,0)" data-name="Layer 2"><path d="m1421.3 1539.6h-689.5c-107.4 0-194.8-87.4-194.8-194.9v-689.4c0-107.5 87.4-194.9 194.8-194.9h689.5c107.4 0 194.8 87.4 194.8 194.9v689.4c0 107.5-87.4 194.9-194.8 194.9zm-689.5-1009.2a124.9 124.9 0 0 0 -124.8 124.9v689.4a124.9 124.9 0 0 0 124.8 124.9h689.5c68.8 0 124.8-56 124.8-124.9v-689.4c0-68.9-56-124.9-124.8-124.9z"/><path d="m1023.7 1153a35.1 35.1 0 0 1 -24.7-10.2l-130.5-130.5a35 35 0 0 1 49.5-49.5l105.7 105.7 211.4-211.3a35 35 0 0 1 49.5 49.5l-236.1 236.1a35.4 35.4 0 0 1 -24.8 10.2z"/></g></svg> 
-  </div>
+    <div class='dffd invize reveal fade-left'>
+  <svg class='mar_lf invize' onClick={function65} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+  <svg onClick={createActiiinfo1} class='add_plus1 invize'viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"  fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-square</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" > <g id="Icon-Set"  transform="translate(-100.000000, -1035.000000)" fill="#000000"> <path d="M130,1063 C130,1064.1 129.104,1065 128,1065 L104,1065 C102.896,1065 102,1064.1 102,1063 L102,1039 C102,1037.9 102.896,1037 104,1037 L128,1037 C129.104,1037 130,1037.9 130,1039 L130,1063 L130,1063 Z M128,1035 L104,1035 C101.791,1035 100,1036.79 100,1039 L100,1063 C100,1065.21 101.791,1067 104,1067 L128,1067 C130.209,1067 132,1065.21 132,1063 L132,1039 C132,1036.79 130.209,1035 128,1035 L128,1035 Z M122,1050 L117,1050 L117,1045 C117,1044.45 116.552,1044 116,1044 C115.448,1044 115,1044.45 115,1045 L115,1050 L110,1050 C109.448,1050 109,1050.45 109,1051 C109,1051.55 109.448,1052 110,1052 L115,1052 L115,1057 C115,1057.55 115.448,1058 116,1058 C116.552,1058 117,1057.55 117,1057 L117,1052 L122,1052 C122.552,1052 123,1051.55 123,1051 C123,1050.45 122.552,1050 122,1050 L122,1050 Z" id="plus-square"> </path> </g> </g> </g></svg>
+  
+ </div>
 
       <div class="row mission__body g-3 g-xl-5">
       <div class="col-12 col-xl-7">
           <div class="mission__image aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
-         <img src={process.env.REACT_APP_API_URL + setActiiRef?.current?.img} alt="" class=" lazyloaded"/></div>
+         <img src={process.env.REACT_APP_API_URL + setActiiRef?.current?.img} alt="" class="reveal fade-bottom  lazyloaded"/></div>
          
         </div>
         <div class="col-12 col-xl-5 aos-init aos-animate" data-aos="fade-up">
@@ -906,9 +1166,9 @@ get4()
     <input class='margin-top_101 class1212 text08 file' onChange={selectFile3} placeholder={'Иконка'} type="file" />
    <button onClick={save_photo} class='v_but bububu butil'>сохранить</button>
         <div class='but_flex'>
-<div class='carousel_buttom zapis bgcolor_new color_bg'>
+<a href='#vizit'  class='carousel_buttom zapis bgcolor_new color_bg reveal fade-right'>
         Записаться 
-       </div>
+       </a>
 </div>
           </div>
         </div>
@@ -919,16 +1179,16 @@ get4()
 
 
 
-  <section class="section mission">
+  <section class="section mission" id='otzivi'>
     <div class="container">
 
    
     <div class="koguvcavis-varazdel">
   <div class="sestim-donials">
   <input class='class14 title_tex_1 file' defaultValue={'Отзывы'} onChange={setUslugi_title} placeholder={'Иконка'} type="text" />
-  <h2 class="section__title aos-init aos-animate" data-aos="fade-left">Отзывы</h2>
+  <h2 class="section__title aos-init aos-animate reveal fade-left" data-aos="fade-left">Отзывы</h2>
 
-  <div class="sectionesag"></div>
+  <div class="sectionesag reveal fade-left"></div>
 
   <div class="sagestim-lonials">
 
@@ -936,7 +1196,9 @@ get4()
   <Carous1 num={setitems2Ref.current} />
    {/* <Gallery1 items1={items3} /> */}
    </div>
-
+   <div class='plus'>
+      <svg onClick={add_otziv} class='add_plus invize'viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"  fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-square</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" > <g id="Icon-Set"  transform="translate(-100.000000, -1035.000000)" fill="#000000"> <path d="M130,1063 C130,1064.1 129.104,1065 128,1065 L104,1065 C102.896,1065 102,1064.1 102,1063 L102,1039 C102,1037.9 102.896,1037 104,1037 L128,1037 C129.104,1037 130,1037.9 130,1039 L130,1063 L130,1063 Z M128,1035 L104,1035 C101.791,1035 100,1036.79 100,1039 L100,1063 C100,1065.21 101.791,1067 104,1067 L128,1067 C130.209,1067 132,1065.21 132,1063 L132,1039 C132,1036.79 130.209,1035 128,1035 L128,1035 Z M122,1050 L117,1050 L117,1045 C117,1044.45 116.552,1044 116,1044 C115.448,1044 115,1044.45 115,1045 L115,1050 L110,1050 C109.448,1050 109,1050.45 109,1051 C109,1051.55 109.448,1052 110,1052 L115,1052 L115,1057 C115,1057.55 115.448,1058 116,1058 C116.552,1058 117,1057.55 117,1057 L117,1052 L122,1052 C122.552,1052 123,1051.55 123,1051 C123,1050.45 122.552,1050 122,1050 L122,1050 Z" id="plus-square"> </path> </g> </g> </g></svg>
+         </div>
 
   </div>
 
@@ -950,51 +1212,51 @@ get4()
     </section>
 
 
-    <section class="section mission">
+    <section class="section mission" id='vizit'>
     <div class="container">
     <div class='horizontal_line'></div> 
-    <input class='class17  file' defaultValue={setVizitRef?.current?.name}   placeholder={'Иконка'} type="text" />
+    <input class='reveal fade-left  file' defaultValue={setVizitRef?.current?.name}   placeholder={'Иконка'} type="text" />
 
-    <h2 class="section__title aos-init aos-animate class18" data-aos="fade-left">{setVizitRef?.current?.name}</h2>
+    <h2 class="section__title aos-init aos-animate reveal fade-left" data-aos="fade-left">{setVizitRef?.current?.name}</h2>
     <div class='dffd'>
-  <svg class='mar_lf class13' onClick={function67} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-  <button class='butil' onClick={functi3}>сохранить</button>
+  <svg class='mar_lf class13 invize' onClick={function67} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+  <button class='butil invize' onClick={functi3}>сохранить</button>
   </div>
     <div class=" ">
    <div class="row d_row">
     <div class="col-md-6 image-section">
-      <div class='title_vizit class18'>
+      <div class='reveal fade-left title_vizit class18'>
       {setVizitRef?.current?.description}
       </div>
-      <textarea class='class17_  file' defaultValue={setVizitRef?.current?.description} onChange={e => setvizit_desc(e.target.value)}placeholder={'Иконка'} type="text" ></textarea>
-      <input class='class17__ file' onChange={selectFile4} placeholder={'Иконка'} type="file" />
-     <img class='img_forma '  height="400" 
+      <textarea class='reveal fade-left class17_  file' defaultValue={setVizitRef?.current?.description} onChange={e => setvizit_desc(e.target.value)}placeholder={'Иконка'} type="text" ></textarea>
+      <input class='reveal fade-left class17__ file' onChange={selectFile4} placeholder={'Иконка'} type="file" />
+     <img class='img_forma reveal fade-bottom'  height="400" 
      src={process.env.REACT_APP_API_URL + setVizitRef?.current?.img}
     width="600"/>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 ">
      <div class="appointment-form">
-      <h5>
+      <h5 class='reveal fade-right'>
        Как К Вам можно обращаться?
       </h5>
-      <input class="form-control form-control__" placeholder="Имя Фамилия" type="text"/>
-      <h5>
+      <input class="reveal fade-right form-control form-control__" placeholder="Имя Фамилия" type="text"/>
+      <h5 class='reveal fade-right'>
        Телефон
       </h5>
-      <div class="input-group mb-3">
+      <div class="input-group mb-3 reveal fade-right">
        <span class="input-group-text" id="basic-addon1">
         +7
        </span>
        <input aria-describedby="basic-addon1" aria-label="Phone" class="form-control form-control_" placeholder="(999) 999-99-99" type="text"/>
       </div>
-      <h5>
+      <h5 class='reveal fade-right'>
        Напишите свой вопрос или пожелания
       </h5>
-      <textarea class="form-control" rows="3"></textarea>
-      <button class="btn btn-submit bgcolor_new bord_r">
+      <textarea class="form-control reveal fade-right" rows="3"></textarea>
+      <button class="btn btn-submit bgcolor_new bord_r reveal fade-right">
        ОТПРАВИТЬ ЗАЯВКУ
       </button>
-      <p class="form-text">
+      <p class="form-text reveal fade-right">
        Нажимая на кнопку "Оставить заявку", Вы выражаете свое согласие с условиями обработки персональных данных
       </p>
      </div>
@@ -1007,22 +1269,24 @@ get4()
 
 
     
-    <section class="section mission">
+    <section class="section mission" id='sert'>
     <div class="container">
     <div class='horizontal_line'></div> 
     <input class='class22  file' defaultValue={'Сертификаты'} onChange={setUslugi_title} placeholder={'Иконка'} type="text" />
 
-    <h2 class="class21 section__title aos-init aos-animate" data-aos="fade-left">Сертификаты</h2>
+    <h2 class="reveal fade-left class21 section__title aos-init aos-animate" data-aos="fade-left">Сертификаты</h2>
 
-    <div class='dffd'>
+    {/* <div class='dffd'>
   <svg class='mar_lf class13' onClick={function68} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
    <svg  width='47px' class='pd_f class13' viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg"><g id="Layer_2" fill="rgb(0,0,0)" data-name="Layer 2"><path d="m1421.3 1539.6h-689.5c-107.4 0-194.8-87.4-194.8-194.9v-689.4c0-107.5 87.4-194.9 194.8-194.9h689.5c107.4 0 194.8 87.4 194.8 194.9v689.4c0 107.5-87.4 194.9-194.8 194.9zm-689.5-1009.2a124.9 124.9 0 0 0 -124.8 124.9v689.4a124.9 124.9 0 0 0 124.8 124.9h689.5c68.8 0 124.8-56 124.8-124.9v-689.4c0-68.9-56-124.9-124.8-124.9z"/><path d="m1023.7 1153a35.1 35.1 0 0 1 -24.7-10.2l-130.5-130.5a35 35 0 0 1 49.5-49.5l105.7 105.7 211.4-211.3a35 35 0 0 1 49.5 49.5l-236.1 236.1a35.4 35.4 0 0 1 -24.8 10.2z"/></g></svg> 
-  </div>
+  </div> */}
       <div class='bmw ' link='bmw'>
       <Carous1 num={setitems3Ref?.current} />
    {/* <Gallery1 items1={items2} /> */}
    </div>
-
+   <div class='plus'>
+      <svg onClick={add_sert} class='add_plus invize'viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"  fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-square</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" > <g id="Icon-Set"  transform="translate(-100.000000, -1035.000000)" fill="#000000"> <path d="M130,1063 C130,1064.1 129.104,1065 128,1065 L104,1065 C102.896,1065 102,1064.1 102,1063 L102,1039 C102,1037.9 102.896,1037 104,1037 L128,1037 C129.104,1037 130,1037.9 130,1039 L130,1063 L130,1063 Z M128,1035 L104,1035 C101.791,1035 100,1036.79 100,1039 L100,1063 C100,1065.21 101.791,1067 104,1067 L128,1067 C130.209,1067 132,1065.21 132,1063 L132,1039 C132,1036.79 130.209,1035 128,1035 L128,1035 Z M122,1050 L117,1050 L117,1045 C117,1044.45 116.552,1044 116,1044 C115.448,1044 115,1044.45 115,1045 L115,1050 L110,1050 C109.448,1050 109,1050.45 109,1051 C109,1051.55 109.448,1052 110,1052 L115,1052 L115,1057 C115,1057.55 115.448,1058 116,1058 C116.552,1058 117,1057.55 117,1057 L117,1052 L122,1052 C122.552,1052 123,1051.55 123,1051 C123,1050.45 122.552,1050 122,1050 L122,1050 Z" id="plus-square"> </path> </g> </g> </g></svg>
+         </div>
     </div>
     </section>
 
@@ -1034,18 +1298,41 @@ get4()
     <div class='kontact'>
 
 <h2 class="section__title color aos-init aos-animate" data-aos="fade-left">{setKontactsRef?.current?.name}</h2>
-
-<h4 class='fs_2'>Адрес: Москва, Трубная 27 стр.3
+<div class='dffd'>
+  <svg class='mar_lf class13 invize' stroke='#FFF' onClick={functi4} viewBox="0 0 24 24" width='30px' cursor='pointer' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+  <button class='butil invize' onClick={functi5}>сохранить</button>
+  </div>
+<h4 class='fs_2 teex_iput_none'>
+  Адрес: {setKontactsRef?.current?.adress}
 
 </h4>
+<input defaultValue={setKontactsRef?.current?.adress} onChange={e => setadres(e.target.value)  }  class='teex_iput '/>
+
+
 Телефоны:<br/>
 <div class='teex1'>
-+7 916 056-07-13<br/>
-+7 499 460-43-15
+
+  {setKontacts_phoneRef?.current?.map(i=>
+    <div class='h_25_'>
+    <Phone123 i={i} get={get}/>
+<br/>
 </div>
-<div class='teex'>
+  )
+
+  }
+
+</div>
+
+
+
+
+
+<div class='teex teex_iput_none'>
 {setKontactsRef?.current?.uslugi}
 </div>
+<input defaultValue={setKontactsRef?.current?.uslugi}onChange={e => setull(e.target.value)  }  class='teex_iput'/>
+
+
 </div>
 
 
@@ -1071,19 +1358,24 @@ get4()
         <div class="footer-col">
           <h4>Компания</h4>
           <ul>
-            <li><a href="#">О нас</a></li>
-            <li><a href="#">Услуги</a></li>
-            <li><a href="#">Акции</a></li>
-            <li><a href="#">Комплексные предложения</a></li>
+            <li><a href="#o_sebe">О себе</a></li>
+            <li><a href="#uslugi">Услуги</a></li>
+            <li><a href="#actii">Акции</a></li>
+            <li><a href="#predl">Комплексные предложения</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Услуги</h4>
           <ul>
-            <li><a href="#">Иньекционная косметология</a></li>
-            <li><a href="#">Уходовая косметика
+          {/* {setUslugiRef?.current?.map(i =>
+      
+      <li><a href="#">Иньекционная косметология</a></li>
+       
+             )}  */}
+            <li><a href="#uslugi">Иньекционная косметология</a></li>
+            <li><a href="#uslugi">Уходовая косметика
 </a></li>
-            <li><a href="#">Обучение косметологии
+            <li><a href="#uslugi">Обучение косметологии
 </a></li>
      
           </ul>
@@ -1091,9 +1383,9 @@ get4()
         <div class="footer-col">
           <h4>Информация</h4>
           <ul>
-            <li><a href="#">Отзывы</a></li>
-            <li><a href="#">Сертификаты</a></li>
-            <li><a href="#">Запланировать визит</a></li>
+            <li><a href="#otzivi">Отзывы</a></li>
+            <li><a href="#sert">Сертификаты</a></li>
+            <li><a href="#vizit">Запланировать визит</a></li>
 
           </ul>
         </div>
@@ -1110,6 +1402,7 @@ get4()
         </div>
       </div>
      </div>
+     <div id='elementID'  data-bs-toggle="modal" data-bs-target="#staticBackdrop"></div>
   </footer>
 
     </div>

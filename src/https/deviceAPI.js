@@ -32,6 +32,7 @@ export const putPrice = async (device) => {
     const data1 = await $host.post('api/device/putUslugi_price', device)
     return data1
 }
+
 export const putKomplex_predl_info = async (device) => {
     const data1 = await $host.post('api/device/putKomplex_predl_info', device)
     return data1
@@ -209,10 +210,145 @@ export const getSertificats_info = async () => {
 }
 
 export const getKontacts = async () => {
-    const {data} = await $host.get('api/device/getKontacts/1')  
+    const {data} = await $host.get('api/device/getKontacts')  
     return data
 }
 export const getKontacts_phone = async () => {
     const {data} = await $host.get('api/device/getKontacts_phone/1')  
     return data
+}
+
+
+
+
+
+
+
+
+
+export const putUslugiprice1 = async (device) => {
+    const data1 = await $host.post('api/device/putUslugiprice1',  device)
+    return data1
+}
+
+
+export const createKategorii1 = async () => {
+    const {data} = await $host.post('api/device/createKategorii')
+    return data
+}
+export const delKategorii1 = async (id) => {
+    const {data} = await $host.delete('api/device/delKategorii/'+ id )
+    return data
+}
+
+
+export const creategetOsebeinfo1 = async () => {
+    const {data} = await $host.post('api/device/creategetOsebeinfo', )
+    return data
+}
+export const delOsebeinfo1 = async (id) => {
+    const {data} = await $host.delete('api/device/delOsebeinfo/'+ id )
+    return data
+}
+
+
+export const createUslugi1 = async () => {
+    const {data} = await $host.post('api/device/createUslugi', )
+    return data
+}
+export const delUslugi1 = async (id) => {
+    const {data} = await $host.delete('api/device/delUslugi/'+ id )
+    return data
+}
+
+
+export const createUslugiprice2 = async (UslugiPriceId,uslugiId) => {
+    const {data} = await $host.post('api/device/createUslugiprice', {UslugiPriceId,uslugiId})
+    return data
+}
+export const delUslugiprice1 = async (id) => {
+    const {data} = await $host.delete('api/device/delUslugiprice/'+ id )
+    return data
+}
+
+
+export const createKomplexpredlinfo1 = async () => {
+    const {data} = await $host.post('api/device/createKomplexpredlinfo', )
+    return data
+}
+export const delKomplex_predl_info1 = async (id) => {
+    const {data} = await $host.delete('api/device/delKomplex_predl_info/'+ id )
+    return data
+}
+
+
+
+export const createKomplexpredlinfodesc = async (komplexPredlInfoId) => {
+    const {data} = await $host.post('api/device/createKomplexpredlinfodesc', {komplexPredlInfoId})
+    return data
+}
+export const delKomplexpredlinfodesc1 = async (id) => {
+    const {data} = await $host.delete('api/device/delKomplexpredlinfodesc/'+ id )
+    return data
+}
+
+
+export const createActiiinfo = async () => {
+    const {data} = await $host.post('api/device/createActiiinfo')
+    return data
+}
+export const delActiiinfo1 = async (id) => {
+    const {data} = await $host.delete('api/device/delActiiinfo/'+ id )
+    return data
+}
+
+export const createOtziviinfo = async () => {
+    const {data} = await $host.post('api/device/createOtziviinfo' )
+    return data
+}
+export const delOtziviinfo = async (id) => {
+    const {data} = await $host.delete('api/device/delOtziviinfo/'+ id )
+    return data
+}
+
+
+export const createSertificatsinfo = async () => {
+    const {data} = await $host.post('api/device/createSertificatsinfo' )
+    return data
+}
+export const delSertificatsinfo1 = async (id) => {
+    const {data} = await $host.delete('api/device/delSertificatsinfo/'+ id )
+    return data
+}
+
+
+export const createKontactsphone = async () => {
+    const {data} = await $host.post('api/device/createKontactsphone')
+    return data
+}
+export const delKontactsphone1 = async (id) => {
+    const {data} = await $host.delete('api/device/delKontactsphone/'+ id )
+    return data
+}
+
+
+
+export const putPhone = async (device) => {
+    const data1 = await $host.post('api/device/putPhone', device)
+    return data1
+}
+export const crteatePhone = async () => {
+    const {data} = await $host.post('api/device/crteatePhone')
+    return data
+}
+export const delPhone = async (id) => {
+    const {data} = await $host.delete('api/device/delPhone/'+ id )
+    return data
+}
+
+
+
+export const putUsl = async (device) => {
+    const data1 = await $host.post('api/device/putUsl',  device)
+    return data1
 }
